@@ -1,7 +1,13 @@
+
 name: Run Automated Tests with Testomat.io
 
 on:
   workflow_dispatch:
+    inputs:
+      grep:
+        description: "Testomat filter"
+        required: false
+        default: ""
 
 jobs:
   test:
@@ -31,3 +37,4 @@ jobs:
           npx @testomatio/reporter \
           --apiKey ${{ secrets.TESTOMATIO }} \
           --cucumber target/cucumber.json
+
